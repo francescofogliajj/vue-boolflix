@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+    <title>Boolflix</title>
+  </head>
+  <body>
+
+    <div id="app">
+      <header>
+        <div class="left">
+          <h1>Boolflix</h1>
+        </div>
+        <div class="right">
+          <input type="text" name="" value="">
+          <button type="button" name="button">Cerca</button>
+        </div>
+      </header>
+
+      <main>
+        <div class="card" v-for="movie in movies">
+          <img :src="PosterPath + movie.poster_path" alt="movie.title">
+          <div class="info">
+            <h3>{{ movie.title }}</h3>
+            <p>{{ movie.original_title }}</p>
+            <p>{{ movie.original_language }}</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/script.js" charset="utf-8"></script>
+  </body>
+</html>
