@@ -17,8 +17,8 @@
           <h1>Boolflix</h1>
         </div>
         <div class="right">
-          <input type="text" name="" value="">
-          <button type="button" name="button">Cerca</button>
+          <input type="text" name="" value="" v-model="userInput">
+          <button type="button" name="button" @click="search">Cerca</button>
         </div>
       </header>
 
@@ -29,7 +29,7 @@
             <h3>{{ movie.title }}</h3>
             <p>{{ movie.original_title }}</p>
             <p>{{ movie.original_language }}</p>
-            <p>{{ movie.overview }}</p>
+            <p>{{ movie.overview.substring(0, 140) }}</p>
           </div>
         </div>
       </main>
