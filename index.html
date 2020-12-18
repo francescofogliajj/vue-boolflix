@@ -24,11 +24,12 @@
 
       <main>
         <div class="card" v-for="movie in movies">
-          <img :src="PosterPath + movie.poster_path" alt="movie.title">
+          <img :src="posterPath + movie.poster_path" alt="movie.title">
           <div class="info">
             <h3>{{ movie.title }}</h3>
             <p>{{ movie.original_title }}</p>
             <p>{{ movie.original_language }}</p>
+            <p>{{ movie.overview }}</p>
           </div>
         </div>
       </main>
