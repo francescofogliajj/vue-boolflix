@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.css" integrity="sha512-f73UKwzP1Oia45eqHpHwzJtFLpvULbhVpEJfaWczo/ZCV5NWSnK4vLDnjTaMps28ocZ05RbI83k2RlQH92zy7A==" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
@@ -18,7 +19,9 @@
         </div>
         <div class="right">
           <input type="text" name="" value="" v-model="userInput">
-          <button type="button" name="button" @click="search">Cerca</button>
+          <button type="button" name="button" @click="search">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </header>
 
@@ -26,10 +29,18 @@
         <div class="card" v-for="movie in movies">
           <img :src="posterPath + movie.poster_path" alt="movie.title">
           <div class="info">
-            <h3>{{ movie.title }}</h3>
-            <p>{{ movie.original_title }}</p>
-            <p>{{ movie.original_language }}</p>
-            <p>{{ movie.overview.substring(0, 140) }}</p>
+            <p>
+              <strong>Titolo:</strong> {{ movie.title }}
+            </p>
+            <p>
+              <strong>Titolo originale:</strong> {{ movie.original_title }}
+            </p>
+            <p>
+              <strong>Lingua originale:</strong> {{ movie.original_language }}
+            </p>
+            <p>
+              <strong>Trama:</strong> {{ movie.overview }}
+            </p>
           </div>
         </div>
       </main>
