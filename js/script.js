@@ -60,6 +60,16 @@ var app = new Vue ({
           return "https://www.artecreo.it/3681/prodotto-non-disponibile.jpg";
       }
 
+    },
+
+    getPosterPath(movie) {
+
+      if (movie.poster_path !== null) {
+        return "https://image.tmdb.org/t/p/w342/" + movie.poster_path;
+      } else {
+        return "https://i.pinimg.com/originals/d3/8c/87/d38c87b8f94c3d0417a632d82cdf752b.png";
+      }
+
     }
 
   },
