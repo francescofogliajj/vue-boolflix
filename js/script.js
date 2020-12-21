@@ -4,7 +4,7 @@ var app = new Vue ({
 
   data: {
     movies: [],
-    posterPath: "https://image.tmdb.org/t/p/w220_and_h330_face/",
+    posterPath: "https://image.tmdb.org/t/p/w342/",
     userInput: ""
   },
 
@@ -22,6 +22,18 @@ var app = new Vue ({
         })
         .then( result => {
           this.movies = result.data.results;
+      });
+
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "149f6f231b74bbad3f1401daa78a4cce",
+            query: this.userInput,
+            language: "it-IT"
+          }
+        })
+        .then( result => {
+          this.movies = this.movies.concat(result.data.results);
           this.convertVoteAverage();
       });
 

@@ -82,7 +82,7 @@ main {
   height: 100%;
   padding: 10px;
   font-size: 16px;
-  overflow: hidden;
+  overflow: scroll;
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
   transition: opacity 1.5s;
