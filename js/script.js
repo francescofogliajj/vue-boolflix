@@ -22,9 +22,16 @@ var app = new Vue ({
         })
         .then( result => {
           this.movies = result.data.results;
+          this.convertVoteAverage();
       });
 
-    }
+    },
+
+    convertVoteAverage() {
+      this.movies.forEach( movie => {
+        movie.vote_average = Math.ceil(movie.vote_average / 2)
+      });
+    },
 
   },
 

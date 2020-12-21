@@ -30,16 +30,20 @@
           <img :src="posterPath + movie.poster_path" alt="movie.title">
           <div class="info">
             <p>
-              <strong>Titolo:</strong> {{ movie.title }}
+              <strong>Titolo: </strong>{{ movie.title }}
             </p>
             <p>
-              <strong>Titolo originale:</strong> {{ movie.original_title }}
+              <strong>Titolo originale: </strong>{{ movie.original_title }}
             </p>
             <p>
-              <strong>Lingua originale:</strong> {{ movie.original_language }}
+              <strong>Lingua originale: </strong>{{ movie.original_language }}
             </p>
             <p>
-              <strong>Trama:</strong> {{ movie.overview }}
+              <strong>Voto:</strong>
+              <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= movie.vote_average) ? 'fas' : 'far'"></i>
+            </p>
+            <p>
+              <strong>Trama: </strong>{{ movie.overview }}
             </p>
           </div>
         </div>
