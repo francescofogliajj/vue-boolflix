@@ -36,7 +36,8 @@
               <strong>Titolo originale: </strong>{{ movie.original_title }}
             </p>
             <p>
-              <strong>Lingua originale: </strong>{{ movie.original_language }}
+              <strong>Lingua originale: </strong>
+              <img class="flag" :src="languageToFlag(movie)" :alt="movie.original_language">
             </p>
             <p>
               <strong>Voto:</strong>
