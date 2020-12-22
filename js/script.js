@@ -1,10 +1,12 @@
+const apiKey = "149f6f231b74bbad3f1401daa78a4cce";
+let languageChoice = "it-IT";
+
 var app = new Vue ({
 
   el: "#app",
 
   data: {
     movies: [],
-    posterPath: "https://image.tmdb.org/t/p/w342/",
     userInput: ""
   },
 
@@ -15,9 +17,9 @@ var app = new Vue ({
       axios
         .get("https://api.themoviedb.org/3/search/movie", {
           params: {
-            api_key: "149f6f231b74bbad3f1401daa78a4cce",
+            api_key: apiKey,
             query: this.userInput,
-            language: "it-IT"
+            language: languageChoice
           }
         })
         .then( result => {
@@ -27,9 +29,9 @@ var app = new Vue ({
       axios
         .get("https://api.themoviedb.org/3/search/tv", {
           params: {
-            api_key: "149f6f231b74bbad3f1401daa78a4cce",
+            api_key: apiKey,
             query: this.userInput,
-            language: "it-IT"
+            language: languageChoice
           }
         })
         .then( result => {
