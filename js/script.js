@@ -74,20 +74,4 @@ var app = new Vue ({
 
   },
 
-  // mounted: function() {
-  //
-  //   axios
-  //     .get("https://api.themoviedb.org/3/search/movie", {
-  //       params: {
-  //         api_key: "149f6f231b74bbad3f1401daa78a4cce",
-  //         query: "ritorno+al+futuro",
-  //         language: "it-IT"
-  //       }
-  //     })
-  //     .then( result => {
-  //       this.movies = result.data.results;
-  //   });
-  //
-  // }
-
 });

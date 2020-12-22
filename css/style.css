@@ -11,6 +11,7 @@ body {
   background-color: #303030;
 }
 
+/* Header */
 header {
   height: 80px;
   display: flex;
@@ -58,12 +59,14 @@ button {
   font-size: 16px;
 }
 
+/* Main */
 main {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
 }
 
+/* Cards */
 .card {
   width: calc(100% / 5 - 20px);
   margin: 10px;
@@ -96,7 +99,7 @@ main {
 }
 
 .flag {
-  width: 25px;
+  width: 30px;
   vertical-align: middle;
 }
 

@@ -2,17 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+    <!-- Font Awesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.css" integrity="sha512-f73UKwzP1Oia45eqHpHwzJtFLpvULbhVpEJfaWczo/ZCV5NWSnK4vLDnjTaMps28ocZ05RbI83k2RlQH92zy7A==" crossorigin="anonymous" />
+    <!-- style.css -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Vue.js cdn -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- axios cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
-    <title>Boolflix</title>
+    <title>BoolFlix</title>
   </head>
   <body>
 
+    <!-- Vue -->
     <div id="app">
+      <!-- Header -->
       <header>
         <div class="left">
           <h1>Boolflix</h1>
@@ -24,20 +31,23 @@
           </button>
         </div>
       </header>
+      <!-- /Header -->
 
+      <!-- Main -->
       <main>
+        <!-- Cards -->
         <div class="card" v-for="movie in movies">
           <img :src="getPosterPath(movie)" alt="movie.title">
           <div class="info">
             <p>
               <strong>Titolo: </strong>
-              {{ movie.title }}
-              {{ movie.name }}
+              {{ movie.title }}<!-- Movies -->
+              {{ movie.name }}<!-- Tv series -->
             </p>
             <p>
               <strong>Titolo originale: </strong>
-              {{ movie.original_title }}
-              {{ movie.original_name }}
+              {{ movie.original_title }}<!-- Movies -->
+              {{ movie.original_name }}<!-- Tv series -->
             </p>
             <p>
               <strong>Lingua originale: </strong>
@@ -53,8 +63,11 @@
             </p>
           </div>
         </div>
+        <!-- /Cards -->
       </main>
+      <!-- /Main -->
     </div>
+    <!-- /Vue -->
 
     <script src="js/script.js" charset="utf-8"></script>
   </body>
