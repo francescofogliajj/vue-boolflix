@@ -25,7 +25,7 @@
           <h1>Boolflix</h1>
         </div>
         <div class="right">
-          <input type="text" name="" value="" v-model="userInput">
+          <input type="text" name="" value="" v-model="userInput" @keyup.enter="search">
           <button type="button" name="button" @click="search">
             <i class="fas fa-search"></i>
           </button>
