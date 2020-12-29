@@ -40,25 +40,29 @@
           <img :src="getPosterPath(movie)" alt="movie.title">
           <div class="info">
             <p>
-              <strong>Titolo: </strong>
+              <span>Titolo: </span>
               {{ movie.title }}<!-- Movies -->
               {{ movie.name }}<!-- Tv series -->
             </p>
             <p>
-              <strong>Titolo originale: </strong>
+              <span>Titolo originale: </span>
               {{ movie.original_title }}<!-- Movies -->
               {{ movie.original_name }}<!-- Tv series -->
             </p>
             <p>
-              <strong>Lingua originale: </strong>
+              <span>Lingua originale: </span>
               <img class="flag" :src="languageToFlag(movie)" :alt="movie.original_language">
             </p>
             <p>
-              <strong>Voto: </strong>
+              <span>Voto: </span>
               <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= movie.vote_average) ? 'fas' : 'far'"></i>
             </p>
+            <p v-if="movie.cast.length > 0">
+              <span>Attori: </span>
+              {{ movie.cast.join(", ") }}
+            </p>
             <p>
-              <strong>Trama: </strong>
+              <span>Trama: </span>
               {{ movie.overview }}
             </p>
           </div>

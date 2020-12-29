@@ -24,6 +24,29 @@ var app = new Vue ({
         })
         .then( result => {
           this.movies = result.data.results;
+
+          // Cast
+          for (var i = 0; i < this.movies.length; i++) {
+            const item = this.movies[i];
+            item.cast = [];
+
+            axios
+              .get(`https://api.themoviedb.org/3/movie/${item.id}/credits`, {
+                params: {
+                  api_key: apiKey,
+                }
+              })
+              .then( result => {
+                for (var i = 0; i < result.data.cast.length; i++) {
+                  if (item.cast.length < 5) {
+                    item.cast.push(result.data.cast[i].name);
+                  }
+                }
+                this.$forceUpdate();
+            });
+
+          }
+
       });
 
       axios
@@ -37,14 +60,39 @@ var app = new Vue ({
         .then( result => {
           this.movies = this.movies.concat(result.data.results);
           this.convertVoteAverage();
+
+          // Cast
+          for (var i = 0; i < this.movies.length; i++) {
+            const item = this.movies[i];
+            item.cast = [];
+
+            axios
+              .get(`https://api.themoviedb.org/3/tv/${item.id}/credits`, {
+                params: {
+                  api_key: apiKey,
+                }
+              })
+              .then( result => {
+                for (var i = 0; i < result.data.cast.length; i++) {
+                  if (item.cast.length < 5) {
+                    item.cast.push(result.data.cast[i].name);
+                  }
+                }
+                this.$forceUpdate();
+            });
+
+          }
+
       });
 
     },
 
     convertVoteAverage() {
+
       this.movies.forEach( movie => {
         movie.vote_average = Math.ceil(movie.vote_average / 2)
       });
+
     },
 
     languageToFlag(movie) {
