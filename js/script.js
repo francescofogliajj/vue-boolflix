@@ -7,7 +7,8 @@ var app = new Vue ({
 
   data: {
     movies: [],
-    userInput: ""
+    userInput: "",
+    genresMovies: []
   },
 
   methods: {
@@ -26,7 +27,7 @@ var app = new Vue ({
           this.movies = result.data.results;
 
           // Cast
-          for (var i = 0; i < this.movies.length; i++) {
+          for (let i = 0; i < this.movies.length; i++) {
             const item = this.movies[i];
             item.cast = [];
 
@@ -37,13 +38,25 @@ var app = new Vue ({
                 }
               })
               .then( result => {
-                for (var i = 0; i < result.data.cast.length; i++) {
+                for (let i = 0; i < result.data.cast.length; i++) {
                   if (item.cast.length < 5) {
                     item.cast.push(result.data.cast[i].name);
                   }
                 }
                 this.$forceUpdate();
             });
+
+            // Genres
+            for (let j = 0; j < this.movies[i].genre_ids.length; j++) {
+
+              for (let k = 0; k < this.genresMovies.length; k++) {
+                if (this.movies[i].genre_ids[j] == this.genresMovies[k].id) {
+                  this.movies[i].genre_ids[j] = this.genresMovies[k].name;
+                }
+              }
+
+            }
+            this.$forceUpdate();
 
           }
 
@@ -62,7 +75,7 @@ var app = new Vue ({
           this.convertVoteAverage();
 
           // Cast
-          for (var i = 0; i < this.movies.length; i++) {
+          for (let i = 0; i < this.movies.length; i++) {
             const item = this.movies[i];
             item.cast = [];
 
@@ -73,13 +86,25 @@ var app = new Vue ({
                 }
               })
               .then( result => {
-                for (var i = 0; i < result.data.cast.length; i++) {
+                for (let i = 0; i < result.data.cast.length; i++) {
                   if (item.cast.length < 5) {
                     item.cast.push(result.data.cast[i].name);
                   }
                 }
                 this.$forceUpdate();
             });
+
+            // Genres
+            for (let j = 0; j < this.movies[i].genre_ids.length; j++) {
+
+              for (let k = 0; k < this.genresMovies.length; k++) {
+                if (this.movies[i].genre_ids[j] == this.genresMovies[k].id) {
+                  this.movies[i].genre_ids[j] = this.genresMovies[k].name;
+                }
+              }
+
+            }
+            this.$forceUpdate();
 
           }
 
@@ -123,5 +148,31 @@ var app = new Vue ({
     }
 
   },
+
+  mounted: function() {
+
+    axios
+      .get("https://api.themoviedb.org/3/genre/movie/list", {
+        params: {
+          api_key: apiKey,
+          language: languageChoice
+        }
+      })
+      .then( result => {
+        this.genresMovies = result.data.genres;
+    });
+
+    axios
+      .get("https://api.themoviedb.org/3/genre/tv/list", {
+        params: {
+          api_key: apiKey,
+          language: languageChoice
+        }
+      })
+      .then( result => {
+        this.genresMovies = this.genresMovies.concat(result.data.genres);
+    });
+
+  }
 
 });
