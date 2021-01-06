@@ -25,7 +25,7 @@
           <h1>Boolflix</h1>
         </div>
         <div class="right">
-          <input type="text" name="" value="" v-model="userInput" @keyup.enter="search">
+          <input type="text" name="" value="" v-model="userInput" @keyup.enter="search" placeholder="Cerca Film e Serie TV">
           <button type="button" name="button" @click="search">
             <i class="fas fa-search"></i>
           </button>
@@ -35,43 +35,107 @@
 
       <!-- Main -->
       <main>
-        <!-- Cards -->
-        <div class="card" v-for="movie in movies">
-          <img :src="getPosterPath(movie)" alt="movie.title">
-          <div class="info">
-            <p>
-              <span>Titolo: </span>
-              {{ movie.title }}<!-- Movies -->
-              {{ movie.name }}<!-- Tv series -->
-            </p>
-            <p>
-              <span>Titolo originale: </span>
-              {{ movie.original_title }}<!-- Movies -->
-              {{ movie.original_name }}<!-- Tv series -->
-            </p>
-            <p>
-              <span>Lingua originale: </span>
-              <img class="flag" :src="languageToFlag(movie)" :alt="movie.original_language">
-            </p>
-            <p>
-              <span>Voto: </span>
-              <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= movie.vote_average) ? 'fas' : 'far'"></i>
-            </p>
-            <p v-if="movie.cast.length > 0">
-              <span>Attori: </span>
-              {{ movie.cast.join(", ") }}
-            </p>
-            <p>
-              <span>Genere: </span>
-              {{ movie.genre_ids.join(", ") }}
-            </p>
-            <p>
-              <span>Trama: </span>
-              {{ movie.overview }}
-            </p>
+        <!-- Movies -->
+        <section>
+          <div class="nav" v-if="movies.length > 0">
+            <h2>Film</h2>
+            <select v-model="selectedMoviesGenre">
+              <option value="">Tutti</option>
+              <option v-for="genre in moviesGenres" :value="genre.name">{{ genre.name }}</option>
+            </select>
           </div>
-        </div>
-        <!-- /Cards -->
+          <!-- Cards -->
+          <div class="movies">
+            <div class="card" v-if="movie.genre_ids.includes(selectedMoviesGenre) || selectedMoviesGenre == ''" v-for="movie in movies">
+            <img :src="getPosterPath(movie)" alt="movie.title">
+            <div class="info">
+              <ul>
+                <li>
+                  <span>Titolo: </span>
+                  {{ movie.title }}
+                </li>
+                <li>
+                  <span>Titolo originale: </span>
+                  {{ movie.original_title }}
+                </li>
+                <li>
+                  <span>Lingua originale: </span>
+                  <img class="flag" :src="languageToFlag(movie)" :alt="flag">
+                </li>
+                <li>
+                  <span>Voto: </span>
+                  <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= movie.vote_average) ? 'fas' : 'far'"></i>
+                </li>
+                <li>
+                  <span>Attori: </span>
+                  {{ movie.cast.join(", ") }}
+                </li>
+                <li>
+                  <span>Genere: </span>
+                  {{ movie.genre_ids.join(", ") }}
+                </li>
+                <li>
+                  <span>Trama: </span>
+                  {{ movie.overview }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+          <!-- /Cards -->
+        </section>
+        <!-- /Movies -->
+
+        <!-- Series -->
+        <section>
+          <div class="nav" v-if="series.length > 0">
+            <h2>Serie TV</h2>
+            <select v-model="selectedSeriesGenre">
+              <option value="">Tutte</option>
+              <option v-for="genre in seriesGenres" :value="genre.name">{{ genre.name }}</option>
+            </select>
+          </div>
+          <!-- Cards -->
+          <div class="series">
+            <div class="card" v-if="serie.genre_ids.includes(selectedSeriesGenre) || selectedSeriesGenre == ''" v-for="serie in series">
+            <img :src="getPosterPath(serie)" alt="serie.title">
+            <div class="info">
+              <ul>
+                <li>
+                  <span>Titolo: </span>
+                  {{ serie.name }}
+                </li>
+                <li>
+                  <span>Titolo originale: </span>
+                  {{ serie.original_name }}
+                </li>
+                <li>
+                  <span>Lingua originale: </span>
+                  <img class="flag" :src="languageToFlag(serie)" :alt="flag">
+                </li>
+                <li>
+                  <span>Voto: </span>
+                  <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= serie.vote_average) ? 'fas' : 'far'"></i>
+                </li>
+                <li>
+                  <span>Attori: </span>
+                  {{ serie.cast.join(", ") }}
+                </li>
+                <li>
+                  <span>Genere: </span>
+                  {{ serie.genre_ids.join(", ") }}
+                </li>
+                <li>
+                  <span>Trama: </span>
+                  {{ serie.overview }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+          <!-- /Cards -->
+        </section>
+        <!-- /Series -->
       </main>
       <!-- /Main -->
     </div>

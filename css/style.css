@@ -69,6 +69,29 @@ button {
 main {
   margin-top: 80px;
   padding: 10px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E50914;
+  margin: 10px;
+  border-radius: 3px;
+}
+
+h2 {
+  margin: 10px;
+}
+
+select {
+  height: 30px;
+  margin: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.movies, .series {
   display: flex;
   flex-wrap: wrap;
 }
@@ -95,7 +118,7 @@ main {
   overflow: scroll;
   background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
-  transition: opacity 1.5s;
+  transition: opacity 2s;
   position: absolute;
   top: 0;
   left: 0;
@@ -103,6 +126,10 @@ main {
 
 .card:hover .info {
   opacity: 1;
+}
+
+ul {
+  list-style: none;
 }
 
 span {
