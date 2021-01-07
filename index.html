@@ -46,41 +46,41 @@
           </div>
           <!-- Cards -->
           <div class="movies">
-            <div class="card" v-if="movie.genre_ids.includes(selectedMoviesGenre) || selectedMoviesGenre == ''" v-for="movie in movies">
-            <img :src="getPosterPath(movie)" alt="movie.title">
-            <div class="info">
-              <ul>
-                <li>
-                  <span>Titolo: </span>
-                  {{ movie.title }}
-                </li>
-                <li>
-                  <span>Titolo originale: </span>
-                  {{ movie.original_title }}
-                </li>
-                <li>
-                  <span>Lingua originale: </span>
-                  <img class="flag" :src="languageToFlag(movie)" :alt="flag">
-                </li>
-                <li>
-                  <span>Voto: </span>
-                  <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= movie.vote_average) ? 'fas' : 'far'"></i>
-                </li>
-                <li>
-                  <span>Attori: </span>
-                  {{ movie.cast.join(", ") }}
-                </li>
-                <li>
-                  <span>Genere: </span>
-                  {{ movie.genre_ids.join(", ") }}
-                </li>
-                <li>
-                  <span>Trama: </span>
-                  {{ movie.overview }}
-                </li>
-              </ul>
+            <div class="card" v-if="item.genre_ids.includes(selectedMoviesGenre) || selectedMoviesGenre == ''" v-for="item in movies">
+              <img :src="getPosterPath(item)" :alt="item.title">
+              <div class="info">
+                <ul>
+                  <li>
+                    <span>Titolo: </span>
+                    {{ item.title }}
+                  </li>
+                  <li>
+                    <span>Titolo originale: </span>
+                    {{ item.original_title }}
+                  </li>
+                  <li>
+                    <span>Lingua originale: </span>
+                    <img class="flag" :src="languageToFlag(item)" alt="flag">
+                  </li>
+                  <li>
+                    <span>Voto: </span>
+                    <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= item.vote_average) ? 'fas' : 'far'"></i>
+                  </li>
+                  <li>
+                    <span>Attori: </span>
+                    {{ item.cast.join(", ") }}
+                  </li>
+                  <li>
+                    <span>Genere: </span>
+                    {{ item.genre_ids.join(", ") }}
+                  </li>
+                  <li>
+                    <span>Trama: </span>
+                    {{ item.overview }}
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
           </div>
           <!-- /Cards -->
         </section>
@@ -97,41 +97,41 @@
           </div>
           <!-- Cards -->
           <div class="series">
-            <div class="card" v-if="serie.genre_ids.includes(selectedSeriesGenre) || selectedSeriesGenre == ''" v-for="serie in series">
-            <img :src="getPosterPath(serie)" alt="serie.title">
-            <div class="info">
-              <ul>
-                <li>
-                  <span>Titolo: </span>
-                  {{ serie.name }}
-                </li>
-                <li>
-                  <span>Titolo originale: </span>
-                  {{ serie.original_name }}
-                </li>
-                <li>
-                  <span>Lingua originale: </span>
-                  <img class="flag" :src="languageToFlag(serie)" :alt="flag">
-                </li>
-                <li>
-                  <span>Voto: </span>
-                  <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= serie.vote_average) ? 'fas' : 'far'"></i>
-                </li>
-                <li>
-                  <span>Attori: </span>
-                  {{ serie.cast.join(", ") }}
-                </li>
-                <li>
-                  <span>Genere: </span>
-                  {{ serie.genre_ids.join(", ") }}
-                </li>
-                <li>
-                  <span>Trama: </span>
-                  {{ serie.overview }}
-                </li>
-              </ul>
+            <div class="card" v-if="item.genre_ids.includes(selectedSeriesGenre) || selectedSeriesGenre == ''" v-for="item in series">
+              <img :src="getPosterPath(item)" :alt="item.title">
+              <div class="info">
+                <ul>
+                  <li>
+                    <span>Titolo: </span>
+                    {{ item.name }}
+                  </li>
+                  <li>
+                    <span>Titolo originale: </span>
+                    {{ item.original_name }}
+                  </li>
+                  <li>
+                    <span>Lingua originale: </span>
+                    <img class="flag" :src="languageToFlag(item)" alt="flag">
+                  </li>
+                  <li>
+                    <span>Voto: </span>
+                    <i class="far fa-star" v-for="(star, index) in 5" :class="(index+1 <= item.vote_average) ? 'fas' : 'far'"></i>
+                  </li>
+                  <li>
+                    <span>Attori: </span>
+                    {{ item.cast.join(", ") }}
+                  </li>
+                  <li>
+                    <span>Genere: </span>
+                    {{ item.genre_ids.join(", ") }}
+                  </li>
+                  <li>
+                    <span>Trama: </span>
+                    {{ item.overview }}
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
           </div>
           <!-- /Cards -->
         </section>

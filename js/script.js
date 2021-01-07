@@ -120,19 +120,19 @@ var app = new Vue ({
     },
 
     convertVoteMovie() {
-      this.movies.forEach( movie => {
-        movie.vote_average = Math.ceil(movie.vote_average / 2)
+      this.movies.forEach( item => {
+        item.vote_average = Math.ceil(item.vote_average / 2)
       });
     },
 
     convertVoteSerie() {
-      this.series.forEach( serie => {
-        serie.vote_average = Math.ceil(serie.vote_average / 2)
+      this.series.forEach( item => {
+        item.vote_average = Math.ceil(item.vote_average / 2)
       });
     },
 
-    languageToFlag(movie) {
-      switch (movie.original_language) {
+    languageToFlag(item) {
+      switch (item.original_language) {
         case "it":
           return "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png";
         case "en":
@@ -150,36 +150,9 @@ var app = new Vue ({
       }
     },
 
-    languageToFlag(serie) {
-      switch (serie.original_language) {
-        case "it":
-          return "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png";
-        case "en":
-          return "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png";
-        case "es":
-          return "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png";
-        case "fr":
-          return "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png";
-        case "de":
-          return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png";
-        case "":
-          return "https://www.artecreo.it/3681/prodotto-non-disponibile.jpg";
-        default:
-          return "https://www.artecreo.it/3681/prodotto-non-disponibile.jpg";
-      }
-    },
-
-    getPosterPath(movie) {
-      if (movie.poster_path !== null) {
-        return "https://image.tmdb.org/t/p/w342/" + movie.poster_path;
-      } else {
-        return "https://i.pinimg.com/originals/d3/8c/87/d38c87b8f94c3d0417a632d82cdf752b.png";
-      }
-    },
-
-    getPosterPath(serie) {
-      if (serie.poster_path !== null) {
-        return "https://image.tmdb.org/t/p/w342/" + serie.poster_path;
+    getPosterPath(item) {
+      if (item.poster_path !== null) {
+        return "https://image.tmdb.org/t/p/w342/" + item.poster_path;
       } else {
         return "https://i.pinimg.com/originals/d3/8c/87/d38c87b8f94c3d0417a632d82cdf752b.png";
       }
