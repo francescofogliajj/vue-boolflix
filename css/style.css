@@ -115,7 +115,7 @@ select {
   height: 100%;
   padding: 10px;
   font-size: 16px;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   transition: opacity 2s;
@@ -126,6 +126,14 @@ select {
 
 .card:hover .info {
   opacity: 1;
+}
+
+.info::-webkit-scrollbar {
+  width: 5px;
+}
+.info::-webkit-scrollbar-thumb {
+  background: #E50914;
+  border-radius: 10px;
 }
 
 ul {
