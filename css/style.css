@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #E50914;
+  border-radius: 10px;
+}
+
 body {
   font-family: 'Work Sans', sans-serif;
   font-size: 20px;
@@ -130,10 +138,6 @@ select {
 
 .info::-webkit-scrollbar {
   width: 5px;
-}
-.info::-webkit-scrollbar-thumb {
-  background: #E50914;
-  border-radius: 10px;
 }
 
 ul {
